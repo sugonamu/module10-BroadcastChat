@@ -19,3 +19,16 @@ This project demonstrates a broadcast chat system using Rust's asynchronous prog
 Messages sent by one client are successfully received by all others. The server logs each client connection and forwards messages correctly.
 
 ---
+
+## Experiment 2.2: Modifying the WebSocket Port
+
+- Changed the WebSocket port used by both server and client from `2000` to `8080`.
+- Required updates in:
+  - `TcpListener::bind(...)` in `server.rs`
+  - `ClientBuilder::from_uri(...)` in `client.rs`
+
+### Screenshot:
+![Experiment 2.2](./Experiment2.2.png)
+
+###  Observation:
+The system runs successfully on the new port. Ensuring consistent port configuration between server and client is critical for proper WebSocket connection.
