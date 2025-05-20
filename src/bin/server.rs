@@ -19,7 +19,7 @@ async fn handle_connection(
                 match msg {
                     Some(Ok(msg)) if msg.is_text() => {
                         let text = msg.as_text().unwrap().to_string();
-                        let full_msg = format!("[{addr}]: {text}");
+                        let full_msg = format!("[{addr}] {text}");
                         println!("{full_msg}");
                         let _ = bcast_tx.send(full_msg);
                     }
@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let (bcast_tx, _) = channel(16);
 
     let listener = TcpListener::bind("127.0.0.1:8080").await?;
-    println!("Server listening on ws://127.0.0.1:8000");
+    println!("Server listening on ws://127.0.0.1:8080");
 
     loop {
         let (socket, addr) = listener.accept().await?;

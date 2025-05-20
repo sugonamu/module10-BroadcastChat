@@ -32,3 +32,18 @@ Messages sent by one client are successfully received by all others. The server 
 
 ###  Observation:
 The system runs successfully on the new port. Ensuring consistent port configuration between server and client is critical for proper WebSocket connection.
+
+## Experiment 2.3: Add IP and Port Info to Broadcasted Messages
+
+- Modified the server to include the sender's IP and port in each broadcasted message.
+- Used Rust's `SocketAddr` from the TCP listener to format the prefix:
+  ```rust
+  let full_msg = format!("[{addr}] {text}");
+
+### Screenshot:
+![Experiment 2.3](./Experiment2.3.png)
+
+### Observation:
+Since we don’t have a username or client ID system yet, the IP and port are useful to distinguish between clients. This is especially important in a multi-client chat scenario to track who is speaking.
+
+This approach simulates a basic identity system, which is essential in real-world messaging platforms where identifying message origins is crucial for context, moderation, and reliability.
